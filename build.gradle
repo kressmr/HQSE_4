@@ -29,8 +29,8 @@ jar {
     }
 }
 
-checkstyle {
+/*checkstyle {
     toolVersion '8.18'
     configFile = new File(rootDir, "./config/checkstyle/checkstyle.xml")
     configProperties.checkstyleSuppressionPath = file("$configDir/checkstyle/suppressions.xml").absolutePath
-}
+} */
