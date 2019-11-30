@@ -1,0 +1,11 @@
+language: java
+before_install:
+  - chmod a+x gradlew
+
+install: gradle wrapper --gradle-version 5.2.1
+
+jdk:
+  - oraclejdk11
+
+after_success:
+  - ./gradlew jacocoTestReport coveralls

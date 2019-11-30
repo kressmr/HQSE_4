@@ -1,6 +1,7 @@
 plugins {
     id 'application'
     id 'checkstyle'
+    id "com.github.kt3k.coveralls" version "2.5.0"
 }
 
 group 'HQSE'
@@ -10,8 +11,26 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile "org.mockito:mockito-core:1.+"
+}
+
+configurations {
+    checkstyle
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'Main.Main'
+    }
+}
+
+checkstyle {
+    toolVersion '8.18'
+    configFile = new File(rootDir, "./config/checkstyle/checkstyle.xml")
+    configProperties.checkstyleSuppressionPath = file("$configDir/checkstyle/suppressions.xml").absolutePath
 }
